@@ -19,5 +19,7 @@
 	</array>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Waterio reads your water intake from Health to show it in the widget.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Waterio logs the water you drink to Health.</string>
 </dict>
 </plist>

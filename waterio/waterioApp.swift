@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 import HealthKit
 import WidgetKit
 
@@ -19,30 +18,6 @@ struct waterioApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onOpenURL { url in
-                    guard url.scheme == "waterio" else { return }
-                    openHealthApp()
-                }
-        }
-    }
-
-    /// The widget can only launch its own app, so we trampoline straight into
-    /// Apple Health. The x-apple-health scheme is undocumented and has no
-    /// working path for the Water page, so Browse is the deepest reliable stop.
-    private func openHealthApp() {
-        let candidates = [
-            "x-apple-health://browse",
-            "x-apple-health://",
-        ].compactMap(URL.init(string:))
-        open(candidates)
-    }
-
-    private func open(_ candidates: [URL]) {
-        guard let url = candidates.first else { return }
-        UIApplication.shared.open(url) { success in
-            if !success {
-                open(Array(candidates.dropFirst()))
-            }
         }
     }
 

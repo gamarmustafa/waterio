@@ -10,5 +10,6 @@ import SwiftUI
 struct WaterWidgetBundle: WidgetBundle {
     var body: some Widget {
         WaterWidget()
+        LogWaterControl()
     }
 }
