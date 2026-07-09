@@ -8,6 +8,7 @@ import SwiftUI
 
 struct WaterWidgetView: View {
     let entry: WaterEntry
+    @Environment(\.widgetFamily) private var family
 
     private var progress: Double {
         guard entry.goalLiters > 0 else { return 0 }
@@ -16,13 +17,33 @@ struct WaterWidgetView: View {
 
     var body: some View {
         Group {
-            if entry.needsSetup {
-                setupHint
-            } else {
-                progressRing
+            switch family {
+            case .accessoryCircular:
+                circular
+            default:
+                if entry.needsSetup {
+                    setupHint
+                } else {
+                    progressRing
+                }
             }
         }
         .widgetURL(WaterShared.widgetDeepLinkURL)
+    }
+
+    // Fitness-ring style: full closed circle, progress clockwise from 12 o'clock.
+    private var circular: some View {
+        ZStack {
+            Circle()
+                .stroke(.secondary.opacity(0.4), lineWidth: 12)
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(.primary, style: StrokeStyle(lineWidth: 12, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+            Image(systemName: "drop.fill")
+                .font(.system(size: 18.5))
+        }
+        .padding(7)
     }
 
     private var progressRing: some View {
@@ -75,4 +96,10 @@ struct WaterWidgetView: View {
     WaterEntry.placeholder
     WaterEntry(date: .now, liters: 0.5, goalLiters: 2, needsSetup: false)
     WaterEntry(date: .now, liters: 0, goalLiters: 2, needsSetup: true)
+}
+
+#Preview(as: .accessoryCircular) {
+    WaterWidget()
+} timeline: {
+    WaterEntry.placeholder
 }

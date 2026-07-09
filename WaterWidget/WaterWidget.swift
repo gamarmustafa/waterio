@@ -61,7 +61,7 @@ struct WaterWidget: Widget {
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Water Intake")
-        .description("Today's water from Apple Health. Tap to open Health.")
-        .supportedFamilies([.systemSmall])
+        .description("Today's water from Apple Health.")
+        .supportedFamilies([.systemSmall, .accessoryCircular])
     }
 }

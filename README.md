@@ -4,7 +4,7 @@ Waterio is a widget-first iOS application for tracking daily water intake throug
 
 ## Features
 
-- **Home Screen widget** — displays today's water intake as a progress ring against a configurable daily goal. Data is read directly from HealthKit; the most recent value is cached in an App Group container and shown when Health data is unavailable (for example, while the device is locked).
+- **Home Screen and Lock Screen widgets** — display today's water intake as a progress ring against a configurable daily goal (circular gauge and inline text on the Lock Screen). Data is read directly from HealthKit; the most recent value is cached in an App Group container and shown when Health data is unavailable (for example, while the device is locked).
 - **Control Center control** — an iOS 18 control that logs a configurable quick-add amount to Apple Health in the background. The underlying App Intent is also available as a Shortcuts action and can be assigned to the Action Button.
 - **In-app overview** — today's total, a seven-day intake chart with a goal reference line, and a chronological log of the day's entries. Entries written by Waterio can be removed with a swipe.
 - **Settings** — daily goal and quick-add amount, both adjustable in the app and shared with the widget and control via an App Group.
